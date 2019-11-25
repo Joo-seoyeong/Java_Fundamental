@@ -20,3 +20,5 @@ public class SwitchDemo {
 		System.out.println(month +"월은 "+season+ " 입니다.");
 	}
 }
+// 이 파일 실행할 때에는 매개변수를 직접 넣어야하므로 run configurations에 들어가서
+// 클래스 확인하고 arguments에 직접 숫자를 넣어준다
