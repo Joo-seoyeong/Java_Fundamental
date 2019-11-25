@@ -5,6 +5,7 @@ public class Notice {
 	protected String title;
 	int hit;
 	private String regdate;
+	
 	public static void main(String[] args){
 		Notice n = new Notice();
 		n.number = 10;

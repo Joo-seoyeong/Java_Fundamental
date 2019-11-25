@@ -1,13 +1,15 @@
 package java_20191122.aa;
 
 public class NoticeDemo {
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
+		
 		Notice n = new Notice();
 		n.number = 10;
 		n.title = "title";
 		n.hit = 100;
-		// °°Àº ÆĞÅ°Áö¾È¿¡ ÀÕ´Â ´Ù¸¥ Å¬·¡½º¸¦ »ı¼ºÇØ¼­ ¸â¹ö º¯¼ö¸¦ »ı¼ºÇÏ¸é private´Â Á¢±ÙÇÒ ¼ö ¾ø´Ù
-		//n.regdate = "2019-11-22"; 
+		//ê°™ì€ íŒ¨í‚¤ì§€ì—ì„œëŠ” private ì ‘ê·¼ ë¶ˆê°€
+		//n.regdate = "2019-11-22";
 	}
+
 }
