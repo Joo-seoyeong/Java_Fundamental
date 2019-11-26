@@ -92,7 +92,7 @@ public class CalendarDemo {
 	} 
 	*/
 	public static void main(String[] args) {
-		CalendarDemo c = new CalendarDemo();
+		CalendarDemo c = new CalendarDemo(2019,12,25);
 		// 다른 생성자가 없으면 compiler가 자동으로 매개변수 없는 생성자 호출 
 		// 그러나 위에서 매개변수가 있는 생성자가 있기 때문에 에러 발생 -> 에러가 나지 않게 하려면 1. 디폴트 생성자를 만들거나 2. 매개변수 추가
 		// 2. CalendarDemo c = new CalendarDemo(2019,12,25); -> 이거 하면 밑의 2줄도 필요없이 바로 c.print();
