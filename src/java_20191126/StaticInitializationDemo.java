@@ -16,7 +16,7 @@ public class StaticInitializationDemo {
 	
 	public static void main(String[] args){
 		System.out.println("main");
-		new StaticInitializationDemo(10);
+		new StaticInitializationDemo(10); 
 		new StaticInitializationDemo(20);
 		new StaticInitializationDemo(30);
 	}
