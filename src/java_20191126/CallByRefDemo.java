@@ -1,23 +1,27 @@
 package java_20191126;
 
 public class CallByRefDemo {
-	public static void change(int i, int[] j){
+	public static void change(int i, int[] j, String str){
 		i = 20;
 		j[3] = 400;
+		str += "123";
 	}
 	public static void main(String[] args) {
 		int a = 10;
-		int b[] = {1,2,3,4};
-		
+		int b[] = {1,2,3,4}; 
+		String str = "abc";
 		System.out.println(a);
 		System.out.println(b[3]);
+		System.out.println(str);
 		
-		CallByRefDemo.change(a,b); // a => call by value, b => call by reference
+		CallByRefDemo.change(a,b,str); // a => call by value, b => call by reference
 		                           // 같은 클래스 내에서는 클래스 명 생략 가능
 	
 		System.out.println(a); // call by value 메서드 호출 후 변화 없음
 		System.out.println(b[3]); // call by reference 메서드 호출 후 변화 있음
-
+		System.out.println(str);
+		
+		
 		int[] c; // 메모리 할당이 되지 않는다
 		// System.out.println(c); // 메모리에 올라와있지 않기 때문에 오류 발생
 		c = new int[4];    // 동시에 이루어짐

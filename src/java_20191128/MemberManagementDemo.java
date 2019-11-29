@@ -69,6 +69,7 @@ public class MemberManagementDemo {
 		
 		
 	}
+
 	// 1. 삭제할 아이디를 입력받는다
 	// 2. ArrayList에 있는 멤버 중에서 삭제할 아이디를 찾아서 있으면 삭제하고,
 	//    없으면 "삭제할 아이디가 없습니다" 라는 메세지를 출력한다
@@ -77,7 +78,8 @@ public class MemberManagementDemo {
 	// 5. 번호를 선택하세요> 메세지를 출력한 후 키보드 입력을 받게 대기한다
 	// 6. 번호를 입력받으면 run() 메서드를 호출한다
 	public void delete(){
-		
+		String id2 = console("삭제할 아이디>");
+		list.remove(id2);
 	}
 	
 	// 1. 검색할 아이디를 입력받는다
