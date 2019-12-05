@@ -13,14 +13,13 @@ public class Utility {
 		FileOutputStream fos = null;
 		boolean isSuccess = false;
 		try {
-			fis = new FileInputStream("fromFile");
-			fos = new FileOutputStream("toFile");
-			
-			byte[] readBytes = new byte[1024];
+			fis = new FileInputStream(fromFile);
+			fos = new FileOutputStream(toFile);
+			byte[] readBytes = new byte[1024*10];//8-10kb
 			int readByteCount = 0;
 			
 			while((readByteCount = fis.read(readBytes)) != -1){
-				fos.write(readBytes, 0, readByteCount);
+				fos.write(readBytes,0,readByteCount);
 			}
 			isSuccess = true;
 		} catch (FileNotFoundException e) {
@@ -30,23 +29,30 @@ public class Utility {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-				try {
-					if(fis != null) fis.close();
-					if(fos != null) fos.close();					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			try {
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return isSuccess;
 	}
 	
 	public static String getDate(String pattern){
-		return new SimpleDateFormat(pattern).format(Calendar.getInstance()).sdf.format(c.getTime());
+		return new SimpleDateFormat(pattern).format(Calendar.getInstance().getTime());
+		
 	}
-}	
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+}
 
 
 

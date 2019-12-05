@@ -1,4 +1,4 @@
-package java_20191204.unicast.client;
+package java_20191205.unicast.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,6 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +32,8 @@ public class UnicastClient implements ActionListener{
 	private String id;
 	private String ip;
 	private int port;
+	private BufferedReader br;
+	private BufferedWriter bw;
 	public UnicastClient(String id, String ip,int port){
 		this.id = id;
 		this.ip = ip;
@@ -68,6 +79,23 @@ public class UnicastClient implements ActionListener{
 		
 		jframe.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
+				try {
+					bw.write("exit");
+					bw.newLine();
+					bw.flush();
+					
+					String readLine = br.readLine();
+					if(readLine.equals("exit")){
+						System.exit(0);
+					}
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
 				System.exit(0);
 			}
 			public void windowOpened(WindowEvent e){
@@ -77,9 +105,35 @@ public class UnicastClient implements ActionListener{
 		
 	}
 	
+	public void connect(){
+		try {
+			Socket socket = new Socket(ip,port);
+			
+			//OutputStream out = socket.getOutputStream();
+			//OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream());
+			bw = 
+					new BufferedWriter(
+							new OutputStreamWriter(
+									socket.getOutputStream()));
+			
+			//InputStream in = socket.getInputStream();
+			//InputStreamReader isr = new InputStreamReader(socket.getInputStream());
+			br = 
+					new BufferedReader(
+							new InputStreamReader(
+									socket.getInputStream()));
+			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		new UnicastClient("syh1011","192.168.0.203",3000);
+		new UnicastClient("syh1011","192.168.0.203",3000).connect();
 	}
 
 	@Override
@@ -88,14 +142,41 @@ public class UnicastClient implements ActionListener{
 		Object obj = e.getSource();
 		String message = jtf.getText();
 		if(obj == jbtn ){
-			jta.append(id + ":"+message+"\n");
-			jtf.setText("");
+			try {
+				bw.write(id + ":"+message);
+				bw.newLine();
+				bw.flush();
+				
+				String readLine = br.readLine();
+				
+				jta.append(readLine+"\n");
+				jtf.setText("");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
 		}else if(obj == jtf){
-			jta.append(id + ":"+message+"\n");
-			jtf.setText("");
+			try {
+				bw.write(id + ":"+message);
+				bw.newLine();
+				bw.flush();
+				
+				String readLine = br.readLine();
+				
+				jta.append(readLine+"\n");
+				jtf.setText("");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }
+
+
 
 
 
