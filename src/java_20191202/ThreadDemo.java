@@ -15,7 +15,7 @@ public class ThreadDemo extends Thread{
 	public static void main(String[] args){
 		// 스레드 객체를 생성하는 방법
 		// 1. Thread 클래스를 상속받는다
-		// 2. run 메서드를 오버라이딩한다
+		// 2. run 메서드를 오버라이딩한다s
 		// 3. 해당 객체를 생성한다
 		// 4. 해당 객체로 start 메서드를 호출한다
 		System.out.println("**********star**********");
