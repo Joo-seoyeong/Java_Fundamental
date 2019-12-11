@@ -7,7 +7,8 @@ import java_20191210.dto.DeptDto;
 
 public class DeptDemo {
 	public static void main(String[] args) {
-		DeptDao d = DeptDao.getInstance();
+		DeptDao d = DeptDao.getInstance(); // new로 객체를 생성할 수 없기 때문에 이렇게 생성해야함
+		
 		//boolean isSuccess = d.insert(new DeptDto(50,"DEVELOPERS", "TEXAS"));
 		//System.out.println(isSuccess);
 		

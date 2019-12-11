@@ -23,12 +23,14 @@ public class DeptDao {
 	}
 
 	// 1 singleton pattern
-	private static DeptDao single;
-
+	// single 변수는 static 메서드 (밑의 getInstance()메서드)에서 사용해야하기 때문에 static 변수로 설정해야한다
+	private static DeptDao single; // 자기 자신 변수를 static으로 생성
+	// 외부에서 객체를 생성할 수 없다
 	private DeptDao() {
 	}
-
-	public static DeptDao getInstance() {
+	//외부에서 DeptDao 객체를 생성하기 위해서는 getInstance() 메서드를 이용해야한다
+	//따라서 이 메서드에서는 DeptDao 객체를 하나만 생성할 수 있게 코딩해야한다.(Singleton)
+	public static DeptDao getInstance() { // getInstance()는 반환값이 자기자신
 		if (single == null) {
 			single = new DeptDao();
 		}
